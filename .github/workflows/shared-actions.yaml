@@ -1,13 +1,13 @@
 name: Shared Actions Example
-
+# allows job to be manually invoked via the github guo
 on:
   workflow_dispatch:
-
+# set jib name as checkout-repo on ubuntu runner vm
 jobs:
   checkout-repo:
     runs-on: ubuntu-latest
-
+# clone my repo into this runner so it can access a local copy
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v4
+# list the files in my repo (becaus its now been checked out locally)
       - run: ls
