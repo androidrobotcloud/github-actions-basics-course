@@ -1,11 +1,15 @@
 name: Pull Request Example
 
+# restrict the pull request trigger to a specific folder in the repo
+# If paths: is NOT set then ANY pull request againsta main will trigger this workflow even if the PR is against
+# a differnt folder in the repo
+
 on:
   pull_request:
     branches:
       - main
     paths:
-      - typescript-project/**
+      - typescript-project/** # pull request locked down to this folder only
   workflow_dispatch:
 
 jobs:
@@ -16,6 +20,7 @@ jobs:
       run:
         working-directory: typescript-project
 
+    # download my repo into the runner vm
     steps:
       - uses: actions/checkout@v4
 
